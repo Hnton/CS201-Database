@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Order" table="[Order]">
+        <id name="ID" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="customerID" type="int">
+            <column name="CustomerID" />
+        </property>
+        <property name="dateOrdered" type="java.util.Date">
+            <column name="DateOrdered" />
+        </property>
+        <property name="shipped" type="short">
+            <column name="Shipped" />
+        </property>
+    </class>
+</hibernate-mapping>

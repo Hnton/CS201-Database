@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Item" table="Item">
+        <id name="ID" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="Name" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="Description" />
+        </property>
+        <property name="inventory" type="int">
+            <column name="Inventory" />
+        </property>
+        <property name="price" type="double">
+            <column name="Price" />
+        </property>
+    </class>
+</hibernate-mapping>
