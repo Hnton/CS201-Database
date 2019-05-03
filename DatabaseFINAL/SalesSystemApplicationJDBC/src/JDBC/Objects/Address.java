@@ -128,7 +128,7 @@ public class Address extends EntityBase
 	@Override
 	public String toString()
 	{
-		return String.format("Address [ID=%s, address=%s, city=%s, state=%s, zip=%s]", getID(), address, city, state, zip);
+		return String.format("Address [ID=%s, address=%s, city=%s, state=%s, zip=%s]\n", getID(), address, city, state, zip);
 	}
 	
 	@Override

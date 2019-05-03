@@ -116,7 +116,7 @@ public class Person extends EntityBase
 	@Override
 	public String toString()
 	{
-		return String.format("Person [ID=%s, AddressID=%s, FirstName=%s, LastName=%s, Phone=%s]", getID(), AddressID, FirstName, LastName, Phone);
+		return String.format("Person [ID=%s, AddressID=%s, FirstName=%s, LastName=%s, Phone=%s]\n", getID(), AddressID, FirstName, LastName, Phone);
 	}
 	
 	@Override

@@ -79,7 +79,7 @@ public class SalesRep extends EntityBase
 	@Override
 	public String toString()
 	{
-		return String.format("SalesRep [ID=%s, PersonID=%s, Region=%s]", getID(), PersonID, Region);
+		return String.format("SalesRep [ID=%s, PersonID=%s, Region=%s]\n", getID(), PersonID, Region);
 	}
 	
 	@Override

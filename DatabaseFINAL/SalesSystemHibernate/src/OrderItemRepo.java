@@ -163,7 +163,7 @@ public class OrderItemRepo extends RepoBase<OrderItem> implements Repository<Ord
 	public boolean delete(OrderItem addr)
 	{
 		// None of the others needed this, but delete did
-		transaction.begin();
+//		transaction.begin();
 		try
 		{
 			session.delete(addr);

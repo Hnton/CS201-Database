@@ -15,15 +15,15 @@ import org.hibernate.Query;
 
 //https://www.mkyong.com/hibernate/hibernate-query-examples-hql/
 @SuppressWarnings("deprecation")
-public class OrderRepo extends RepoBase<Order> implements Repository<Order>
+public class ItemRepo extends RepoBase<Item> implements Repository<Item>
 {
 	/**
 	 * Default constructor.  It sets the Schema to Person. and the Table to Address for the repository
 	 */
-	public OrderRepo()
+	public ItemRepo()
 	{
 		this.setSchema("Order");
-		this.setTable("Order");
+		this.setTable("Item");
 	}
 	
 	/**
@@ -31,71 +31,71 @@ public class OrderRepo extends RepoBase<Order> implements Repository<Order>
 	 *  or return null if not found
 	 * @return the Address record with the given ID, or null if not found
 	 */
-	public Order get(int ID)
+	public Item get(int ID)
 	{
-		Order getOrder = new Order();
+		Item getItem = new Item();
 		
 		try
 		{
-			getOrder = (Order) session.get(Order.class, ID);
+			getItem = (Item) session.get(Item.class, ID);
 		}
 		catch (Exception ex)
 		{
 			System.out.println(ex.getMessage());
 		}
-		return getOrder;
+		return getItem;
 	}
 	
 	/**
-	 * getFirst will return the first Order record out of the datastore, 
+	 * getFirst will return the first Item record out of the datastore, 
 	 *  or null if there are no records 
-	 * @return the first Order record in the database
+	 * @return the first Item record in the database
 	 */
-	public Order getFirst()
+	public Item getFirst()
 	{
-		Order Order = new Order();
+		Item Item = new Item();
 		
 		try
 		{
 			@SuppressWarnings("rawtypes")
-			Query query = session.createQuery("from Order order by ID");
+			Query query = session.createQuery("from Item order by ID");
 			@SuppressWarnings("rawtypes")
 			List list = query.list();
 			
 			if (list.size() > 0)
 			{
-				Order = (Order) list.remove(0);				
+				Item = (Item) list.remove(0);				
 			}
 			else
 			{
-				Order = null;
+				Item = null;
 			}
 		}
 		catch (Exception ex)
 		{
 			System.out.println(ex.getMessage());
 		}
-		return Order;
+		return Item;
 	}
 	
 	/**
-	 * getCollection will retrieve a group of Orderes that match a given HQL statement
+	 * getCollection will retrieve a group of Itemes that match a given HQL statement
 	 *   Any valid where clause can be passed. 
 	 *   <br/>
 	 *   Examples (see search documentation also):
-	 *   String matching: from Order where Order like '%1600%'
-	 *   Zip code: where from Order where Zip > 33333
+	 *   String matching: from Item where Item like '%1600%'
+	 *   Zip code: where from Item where Zip > 33333
 	 * @return ArrayList with records matching the hql query
 	 */
 	@SuppressWarnings("unchecked")
-	public ArrayList<Order> getCollection(String hql)
+	public ArrayList<Item> getCollection(String hql)
 	{	
-		ArrayList<Order> list = new ArrayList<Order>();
+		ArrayList<Item> list = new ArrayList<Item>();
 		try
 		{
 			@SuppressWarnings("rawtypes")
 			Query query = session.createQuery(hql);
-			list = new ArrayList<Order>(query.list());
+			list = new ArrayList<Item>(query.list());
 		}
 		catch (Exception ex)
 		{
@@ -105,14 +105,14 @@ public class OrderRepo extends RepoBase<Order> implements Repository<Order>
 	}
 
 	/**
-	 * Add an Order record to the datastore.
+	 * Add an Item record to the datastore.
 	 * This uses the session saveOrUpdate method to create a new record or update an existing record 
 	 * @return The primary key assigned by the database or -1 if the insert was unsuccessful 
 	 */
 	@Override
-	public int add(Order addr)
+	public int add(Item addr)
 	{
-		int OrderID = -1;
+		int ItemID = -1;
 		
 		try
 		{
@@ -121,24 +121,24 @@ public class OrderRepo extends RepoBase<Order> implements Repository<Order>
 			
 			if (addr.getID() > 0)
 			{
-				OrderID = addr.getID();
+				ItemID = addr.getID();
 			}
 		} 
 		catch (Exception ex)
 		{
 			ex.printStackTrace();
 		}
-		return OrderID;
+		return ItemID;
 	}
 	
 	/**
-	 * Update an existing Order record in the datastore.
+	 * Update an existing Item record in the datastore.
 	 *   This uses the session saveOrUpdate method to create a new record or update an existing record 
 	 *   update SQL string and execute it
 	 * @return true if successful, false if not
 	 */
 	@Override
-	public boolean update(Order addr)
+	public boolean update(Item addr)
 	{
 		try
 		{
@@ -154,16 +154,16 @@ public class OrderRepo extends RepoBase<Order> implements Repository<Order>
 	}
 
 	/**
-	 * Delete an Order record from the datastore.
+	 * Delete an Item record from the datastore.
 	 * Foreign Key constraints with the Person table may cause this to fail
 	 * if the person record isn't deleted first
 	 * @return true if successful, false if not
 	 */
 	@Override
-	public boolean delete(Order addr)
+	public boolean delete(Item addr)
 	{
 		// None of the others needed this, but delete did
-		transaction.begin();
+//		transaction.begin();
 		try
 		{
 			session.delete(addr);
@@ -179,23 +179,23 @@ public class OrderRepo extends RepoBase<Order> implements Repository<Order>
 	}
 	
 	/**
-	 * search will do an HQL lookup matching an Order record with the where clause provided.
-	 * Calls getCollection to retrieve results, and returns an ArrayList of the Order instances
+	 * search will do an HQL lookup matching an Item record with the where clause provided.
+	 * Calls getCollection to retrieve results, and returns an ArrayList of the Item instances
 	 *   that match.
 	 * <br/>
 	 *   Examples:
-	 *   String matching: where Order like '%1600%'
+	 *   String matching: where Item like '%1600%'
 	 *   Zip code: where Zip > 33333
 	 * @return ArrayList with records matching the sql where clause parameter
 	 */
-	public ArrayList<Order> search(String term)
+	public ArrayList<Item> search(String term)
 	{
-		ArrayList<Order> Orderes = new ArrayList<Order>();
+		ArrayList<Item> Itemes = new ArrayList<Item>();
 		// no select in HQL.  from <Object> where <class field> is syntax
-		String hql = "from Order " + term;		
+		String hql = "from Item " + term;		
 		// Calling getCollection with the above SQL
-		Orderes = new ArrayList<Order>( getCollection(hql) );
+		Itemes = new ArrayList<Item>( getCollection(hql) );
 		
-		return Orderes;
+		return Itemes;
 	}
 }

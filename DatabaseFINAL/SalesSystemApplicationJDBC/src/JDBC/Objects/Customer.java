@@ -78,7 +78,7 @@ public class Customer extends EntityBase
 	@Override
 	public String toString()
 	{
-		return String.format("Customer [ID=%s, PersonID=%s, SalesRepID=%s]", getID(), PersonID, SalesRepID);
+		return String.format("Customer [ID=%s, PersonID=%s, SalesRepID=%s]\n", getID(), PersonID, SalesRepID);
 	}
 	
 	@Override
